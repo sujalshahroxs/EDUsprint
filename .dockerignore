@@ -1,0 +1,34 @@
+# Version control & Git
+.git
+.gitignore
+.github
+
+# Node dependencies and build artifacts
+**/node_modules
+**/dist
+**/build
+**/.vite
+**/EduSprint-Release
+
+# Environment files and credentials
+**/.env
+**/.env.*
+*.pem
+*.key
+*.tfvars
+*.tfstate*
+
+# Logs and databases
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+database.sqlite
+data/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.swp

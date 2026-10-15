@@ -1,0 +1,25 @@
+﻿
+# EduSprint CIAP generated artifact exclusions
+/backend/EduSprint.exe
+/backend/public/assets/
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+.env
+.env.*
+!.env.example
+**/*.sqlite
+**/*.db
+*.log
+*.pem
+*.key
+**/terraform.tfstate*
+**/.terraform/
+**/*.tfvars
+!**/*.tfvars.example
+EduSprint-Release/
+
+# Local backup snapshots; never publish these
+**/*.before-*
+**/*.before-*.*

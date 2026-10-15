@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # EduSprint Main Application Service
+  edusprint-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: edusprint:v1.1.0
+    container_name: edusprint-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - DB_PATH=/app/data/database.sqlite
+    volumes:
+      - edusprint_data:/app/data
+    networks:
+      - edusprint-network
+
+  # SonarQube Server for SAST (Static Application Security Testing)
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: sonarqube-server
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    networks:
+      - edusprint-network
+
+networks:
+  edusprint-network:
+    driver: bridge
+
+volumes:
+  edusprint_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
