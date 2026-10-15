@@ -49,5 +49,8 @@
       "package.json",
       "node_modules/**/*"
     ]
+  },
+  "overrides": {
+    "tar": "7.5.22"
   }
 }
