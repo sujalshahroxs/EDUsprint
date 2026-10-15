@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5001/api';
+const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:5001/api';
 
 export const fetchProjects = async () => (await fetch(`${API_URL}/projects`)).json();
 export const fetchProject = async (id: string) => (await fetch(`${API_URL}/projects/${id}`)).json();

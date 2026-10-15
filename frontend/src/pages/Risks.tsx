@@ -35,7 +35,7 @@ export default function Risks() {
     if (score >= 10) severity = 'HIGH';
     if (score >= 16) severity = 'CRITICAL';
 
-    await fetch('http://localhost:5001/api/risks', {
+    await fetch((import.meta.env.PROD ? '/api/risks' : 'http://localhost:5001/api/risks'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...newRisk, projectId: parseInt(activeProjectId), score, severity })
